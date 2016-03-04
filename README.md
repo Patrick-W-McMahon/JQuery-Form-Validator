@@ -1,0 +1,19 @@
+# JQuery-Form-Validator
+A JQuery Form Validation plugin
+
+JQuery Form Validator is a JQuery plugin that makes validating form data simple.
+
+To set a DOM element as the error display element just add the attribute "error_display" to the form element and pass the id of the 
+DOM element that will be the container for the error messages. 
+
+To change the error message that is displayed for a field add "data-err-msg" to the input tag and pass it your new error message.
+
+The title of the error can be set with "data-err-title" or setting a label with a 'for' attribute to the input field.
+
+if you have a group of checkbox's and want to set a min and/or max wrap the checkbox's in an element and set the container attribute
+'data-validate'= "checkbox_group" this will tell the validator to treat all child checkbox elements as a group that will be validated 
+together. you can set 'data-min-select' to the min number of checked boxs excepted. for max limit check add 'data-max-select'.
+
+
+If the form is invalid the form will not submit and will display the error messages (if an error display element has been assigned).
+If you setup a reset button on the form the form validator handles the reset and will clear the form and error messages on reset button.
