@@ -77,6 +77,9 @@ $.fn.validate = function(args){
 		if(errorMessages.length>0){
 			stopSubmit();
 		}
+		if(typeof(args['onValidate'])!==="undefined"){
+			args['onValidate']();
+		}
 	}
 	
 	function getErrTitle(elm){
