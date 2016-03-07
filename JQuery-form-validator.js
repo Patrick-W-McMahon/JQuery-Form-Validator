@@ -1,5 +1,9 @@
 $.fn.validate = function(args){
 	var self = this;
+	var settings = [];
+	//if(typeof(args)!==undefined){
+	//	this.settings = args;
+	//}
 	var errorDisplay=undefined;
 	if(isObj(self.attr("errorDiplay"))){
 		errorDisplay = $(self.attr("error_diplay"));
@@ -26,17 +30,19 @@ $.fn.validate = function(args){
 		errorDisplay.hide();
 	}
 	
+	this.err = function(title,msg){
+		errorMessages.push({
+			"title":title,
+			"msg":msg
+		});
+	}
+	
 	function validate(e){
 		event=e;
 		errorMessages = [];
 		self.find(':invalid').each(function(index, node){
 			if($(this).is("input")){
-				var errTitle = getErrTitle($(this));
-				var errMsg = getErrMessage($(this));
-				errorMessages.push({
-					"title":errTitle,
-					"msg":errMsg
-				});
+				self.err(getErrTitle($(this)),getErrMessage($(this)));
 			}
 		});
 		
@@ -55,30 +61,24 @@ $.fn.validate = function(args){
 					});
 					if($(this).attr("data-min-select")){
 						if(count<$(this).attr("data-min-select")){
-							errorMessages.push({
-								"title":getErrTitle($(this)),
-								"msg":"min of "+$(this).attr("data-min-select")+" selections must be made"
-							});
+							self.err(getErrTitle($(this)),"min of "+$(this).attr("data-min-select")+" selections must be made");
 						}
 					}
 					if($(this).attr("data-max-select")){
 						if(count>$(this).attr("data-max-select")){
-							errorMessages.push({
-								"title":getErrTitle($(this)),
-								"msg":"max of "+$(this).attr("data-max-select")+" selections can be made"
-							});
+							self.err(getErrTitle($(this)),"max of "+$(this).attr("data-max-select")+" selections can be made");
 						}
 					}
-					
 				break;
 			}
-		
 		});
+		if(isObj(settings)){
+			if(isObj(settings['onValidate'])&&settings['onValidate']){
+				settings['onValidate']();
+			}
+		}
 		if(errorMessages.length>0){
 			stopSubmit();
-		}
-		if(typeof(args['onValidate'])!==="undefined"){
-			args['onValidate']();
 		}
 	}
 	
