@@ -97,6 +97,10 @@ $.fn.validate = function(args){
 		return "value required";
 	}
 	
+	function getErrors(){
+		return errorMessages;
+	}
+	
 	function displayErrors(){
 		if(isObj(errorDisplay)){
 			errorDisplay.empty();
