@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form Validation Example</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+	<script src="http://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+	<script src="js/main.js" type="text/javascript"></script>
+	<script src="../../JQuery-form-validator.js" type="text/javascript"></script>
+	<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+	<div id="errorMessageBox"></div>
+	<form id="testForm" error_diplay="#errorMessageBox">
+		<h1>Form Validation Example</h1>
+		<p>This example shows how to get access to the error array to handle the errors however you want. view your browser console to see the errors print out on your console display.</p>
+		<div>
+			<label for="fname" id="fnamelabel" class="asterisk">First Name</label>
+			<input type="text" name="fname" id="fname" data-err-msg="You must enter a first name." class="textbox" required/>
+		</div>
+        <div>
+			<label for="lname" id="lnamelabel" class="asterisk">Last Name</label>
+            <input type="text" name="lname" id="lname" data-err-msg="You must enter a last name." class="textbox" required/>
+		</div>
+        <div>
+			<label for="email" id="emaillabel" class="asterisk">Email Address</label>
+            <input type="email" name="email" id="email" data-err-msg="You must enter an email address." class="textbox" required/>
+		</div> 
+		<div>
+			<label for="phone">Phone Number</label>
+			<input type="tel" name="fax" id="fax" class="textbox" size="20" maxlength="20" />
+		</div>
+		<div>
+			<label for="company">Company</label>
+			<input type="text" name="company" id="company" class="textbox" />
+		</div>
+		<div>
+			<label for="title">Title</label>
+			<input type="text" name="title" id="title" class="textbox" />
+		</div>
+		<div class="clear-padding" data-err-title="Checkbox Group" data-validate="checkbox_group" data-min-select="1" data-max-select="3">
+			<h2>select some (min 1 - max 3)</h2>
+			<div><input type="checkbox" name="cha" value="checkbox A"/>Checkbox A</div>
+			<div><input type="checkbox" name="chb" value="checkbox B"/>Checkbox B</div>
+			<div><input type="checkbox" name="chc" value="checkbox C"/>Checkbox C</div>
+			<div><input type="checkbox" name="chd" value="checkbox D"/>Checkbox D</div>
+		</div>
+		<div class="floatRight">
+			<input type="reset" value="Reset"/>
+            <input type="submit" value="Submit"/>	
+		</div>
+	</form>
+	
+</body>
+</html>
