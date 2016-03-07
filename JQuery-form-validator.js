@@ -1,6 +1,6 @@
 $.fn.validate = function(args){
 	var self = this;
-	var settings = args || [];
+	args = args || [];
 	var errorDisplay=undefined;
 	if(isObj(self.attr("errorDiplay"))){
 		errorDisplay = $(self.attr("error_diplay"));
@@ -71,15 +71,13 @@ $.fn.validate = function(args){
 			}
 		
 		});
-		if(isObj(settings)){
-			if(isObj(settings['onValidate'])&&settings['onValidate']){
-				settings['onValidate']();
-			}
+		var onVal = self.getArg('onValidate');
+		if(onVal){
+			onVal(self);
 		}
 		if(errorMessages.length>0){
 			stopSubmit();
 		}
-
 	}
 	
 	function getErrTitle(elm){
@@ -100,7 +98,7 @@ $.fn.validate = function(args){
 		return "value required";
 	}
 	
-	function getErrors(){
+	this.getErrors = function(){
 		return errorMessages;
 	}
 	
@@ -121,6 +119,15 @@ $.fn.validate = function(args){
 		if(typeof(event)!=="undefined"){
 			event.preventDefault();
 		}
+	}
+	
+	this.getArg = function(val){
+		if(isObj(args)){
+			if(isObj(args[val])&&args[val]){
+				return args[val];
+			}
+		}
+		return false;
 	}
 	
 	function isObj(t){
