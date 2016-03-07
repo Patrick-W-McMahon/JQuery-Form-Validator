@@ -1,9 +1,6 @@
 $.fn.validate = function(args){
 	var self = this;
-	var settings = [];
-	if(typeof(args)!==undefined){
-		this.settings = args;
-	}
+	var settings = args || [];
 	var errorDisplay=undefined;
 	if(isObj(self.attr("errorDiplay"))){
 		errorDisplay = $(self.attr("error_diplay"));
@@ -69,8 +66,10 @@ $.fn.validate = function(args){
 							self.err(getErrTitle($(this)),"max of "+$(this).attr("data-max-select")+" selections can be made");
 						}
 					}
+					
 				break;
 			}
+		
 		});
 		if(isObj(settings)){
 			if(isObj(settings['onValidate'])&&settings['onValidate']){
@@ -80,6 +79,7 @@ $.fn.validate = function(args){
 		if(errorMessages.length>0){
 			stopSubmit();
 		}
+
 	}
 	
 	function getErrTitle(elm){
