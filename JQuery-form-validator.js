@@ -1,9 +1,9 @@
 $.fn.validate = function(args){
 	var self = this;
 	var settings = [];
-	//if(typeof(args)!==undefined){
-	//	this.settings = args;
-	//}
+	if(typeof(args)!==undefined){
+		this.settings = args;
+	}
 	var errorDisplay=undefined;
 	if(isObj(self.attr("errorDiplay"))){
 		errorDisplay = $(self.attr("error_diplay"));
