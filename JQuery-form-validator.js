@@ -18,7 +18,7 @@
 			}else{
 				console.log("error display element not set");
 			}
-		},
+		}
 	};
 	
 	$.fn[pluginName] = function(options){
@@ -35,8 +35,13 @@
 		this.element = element;
 		this.options = $.extend({},defaults,options);
 		this._defaults = defaults;
-        	this._name = pluginName;
+        this._name = pluginName;
 		this.errorMessages = [];
+		this.modules=[];
+		
+		this.addModule = function(f){
+			self.modules.push(f);
+		}
 		
 		this.err = function(title,msg){
 			self.errorMessages.push({
@@ -49,6 +54,7 @@
 			return self.errorMessages;
 		}
 		this.init();
+		return this;
 	}
 	
 	Plugin.prototype.init = function(){
@@ -66,6 +72,35 @@
 		
 		$(this.element).find('input[type=reset]').on('click',function(e){
 			reset(e);
+		});		
+		
+		this.addModule(function(plg,elm){
+			elm.find("[data-validate]").each(function(){
+				switch($(this).attr("data-validate").toLowerCase()){
+					case "checkboxgroup":
+					case "checkbox_group":
+					case "checkbox-group":
+						var count=0;
+						var checkboxes = $(this).find("input[type=checkbox]");
+						var passed=false;
+						$(this).find("input[type=checkbox]").each(function(){
+							if($(this).is(':checked')){
+								count++;
+							}
+						});
+						if($(this).attr("data-min-select")){
+							if(count<$(this).attr("data-min-select")){
+								self.err(getErrTitle($(this)),"min of "+$(this).attr("data-min-select")+" selections must be made");
+							}
+						}
+						if($(this).attr("data-max-select")){
+							if(count>$(this).attr("data-max-select")){
+								self.err(getErrTitle($(this)),"max of "+$(this).attr("data-max-select")+" selections can be made");
+							}
+						}
+					break;
+				}
+			});
 		});
 	}
 	
@@ -111,34 +146,10 @@
 			}
 		});
 		
-		elm.find("[data-validate]").each(function(){
-			switch($(this).attr("data-validate").toLowerCase()){
-				case "checkboxgroup":
-				case "checkbox_group":
-				case "checkbox-group":
-					var count=0;
-					var checkboxes = $(this).find("input[type=checkbox]");
-					var passed=false;
-					$(this).find("input[type=checkbox]").each(function(){
-						if($(this).is(':checked')){
-							count++;
-						}
-					});
-					if($(this).attr("data-min-select")){
-						if(count<$(this).attr("data-min-select")){
-							self.err(getErrTitle($(this)),"min of "+$(this).attr("data-min-select")+" selections must be made");
-						}
-					}
-					if($(this).attr("data-max-select")){
-						if(count>$(this).attr("data-max-select")){
-							self.err(getErrTitle($(this)),"max of "+$(this).attr("data-max-select")+" selections can be made");
-						}
-					}
-					
-				break;
-			}
+		for(var m=0;m<self.modules.length;m++){
+			self.modules[m](self,elm);
+		}
 		
-		});
 		self.options.onValidate.call(self);
 		if(self.errorMessages.length>0){
 			stopSubmit(self,e);
