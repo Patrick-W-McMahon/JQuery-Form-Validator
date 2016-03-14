@@ -35,7 +35,7 @@
 		this.element = element;
 		this.options = $.extend({},defaults,options);
 		this._defaults = defaults;
-        this._name = pluginName;
+        	this._name = pluginName;
 		this.errorMessages = [];
 		
 		this.err = function(title,msg){
