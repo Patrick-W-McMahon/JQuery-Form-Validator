@@ -74,8 +74,8 @@
 			reset(e);
 		});		
 		
-		this.addModule(function(plg,elm){
-			elm.find("[data-validate]").each(function(){
+		this.addModule(function(plg,formElm){
+			formElm.find("[data-validate]").each(function(){
 				switch($(this).attr("data-validate").toLowerCase()){
 					case "checkboxgroup":
 					case "checkbox_group":
