@@ -1,7 +1,6 @@
 ;(function ( $, window, document, undefined ){
 	var pluginName = "validate";
 	var self;
-	var event;
 	var defaults={
 		error_display_id:"",
 		errorDisplayElm:"",
@@ -70,7 +69,7 @@
 		});
 	}
 	
-	function stopSubmit(f){
+	function stopSubmit(f,event){
 		f.options.onDisplayErrors.call(f);
 		if(typeof(event)!=="undefined"){
 			event.preventDefault();
@@ -142,7 +141,7 @@
 		});
 		self.options.onValidate.call(self);
 		if(self.errorMessages.length>0){
-			stopSubmit(self);
+			stopSubmit(self,e);
 			self.options.onErrorsFound.call(self);
 		}
 	}
