@@ -40,8 +40,7 @@ If you setup a reset button on the form the form validator handles the reset and
   * **_defaults:** default options.
   * **errorMessages:** array of error message objects. Use `this.getErrors()`.
   * **modules:** array of all modules in the plugin.
-  * 
-  
+ 
 **Modules**
 modules are passed the plugin object and the form element. They have access to the plugin variables and internal methods. 
 This will give a module all the access it needs to validate the fields and add errors. 
