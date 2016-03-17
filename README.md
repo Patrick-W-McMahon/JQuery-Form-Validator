@@ -25,6 +25,26 @@ If you setup a reset button on the form the form validator handles the reset and
   * **onErrorsFound:** ran when 1 or more errors have been found.
   * **onDisplayErrors:** overrides the default error display method.
   * **onReset:** ran on form reset.
+   
+**Internal Methods:**
+  * **getErrors():** returns an array of error objects `{title,msg,field}`. accessed as plugin method
+  * **addModule(module):** adds new module to the plugin. Modules are executed on validation. accessed as plugin method
+  * **getErrTitle(elm):** attempts to get an error title based on the DOM. Not accesed by $(this) and is only used for modules.
+  * **peramSet(optionsArray,defaultval):** passing an array of optional attributes it will pick a valid attr to return. Not accesed by $(this) and is only used for modules.
+  * **getErrMessage(elm):** attempts to get an error message from the DOM. Not accesed by $(this) and is only used for modules.
+  * **isObj(t):** returns true if t is a valid object or false if undefined. Not accesed by $(this) and is only used for modules.
+  
+**Variables**
+  * **element:** points to the form element.
+  * **options:** all configurable options.
+  * **_defaults:** default options.
+  * **errorMessages:** array of error message objects. Use `this.getErrors()`.
+  * **modules:** array of all modules in the plugin.
+  * 
+  
+**Modules**
+modules are passed the plugin object and the form element. They have access to the plugin variables and internal methods. 
+This will give a module all the access it needs to validate the fields and add errors. 
 
 
 Review the examples to see how easy it is to use.
