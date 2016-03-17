@@ -66,15 +66,9 @@
 			$(tE.attr("errorDiplay")),
 			$(tE.attr("error-diplay"))
 		],$(this.options["error_display_id"]));
-		tE.submit(function(e){
-			validate(e);
-		});
-		tE.find('input[type=submit]').on('click',function(e){
-			validate(e);
-		});
-		tE.find('input[type=reset]').on('click',function(e){
-			reset(e);
-		});		
+		tE.submit(function(e){validate(e);});
+		tE.find('input[type=submit]').on('click',function(e){validate(e);});
+		tE.find('input[type=reset]').on('click',function(e){reset(e);});		
 		
 		this.addModule(function(plg,formElm){
 			formElm.find("[data-validate]").each(function(){
