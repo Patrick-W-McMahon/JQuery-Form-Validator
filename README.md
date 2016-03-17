@@ -20,7 +20,7 @@ together. you can set 'data-min-select' to the min number of checked boxs except
 If the form is invalid the form will not submit and will display the error messages (if an error display element has been assigned).
 If you setup a reset button on the form the form validator handles the reset and will clear the form and error messages on reset button.
 
-Callback Methods:
+**Callback Methods:**
   * onValidate: ran every time form is validated.
   * onErrorsFound: ran when 1 or more errors have been found.
   * onDisplayErrors: overrides the default error display method.
