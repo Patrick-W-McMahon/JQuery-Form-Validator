@@ -58,10 +58,11 @@
 	}
 	
 	Plugin.prototype.init = function(){
+		var tE = $(this.element);
 		this.options.errorDisplayElm = peramSet([
-			$($(this.element).attr("error_diplay")),
-			$($(this.element).attr("errorDiplay")),
-			$($(this.element).attr("error-diplay"))
+			$(tE.attr("error_diplay")),
+			$(tE.attr("errorDiplay")),
+			$(tE.attr("error-diplay"))
 		],$(this.options["error_display_id"]));
 		$(this.element).submit(function(e){
 			validate(e);
