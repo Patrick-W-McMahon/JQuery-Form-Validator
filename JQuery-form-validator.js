@@ -53,7 +53,7 @@
 		}
 		
 		this.getErrors = function(){
-			return self.errorMessages;
+			return self.errorMessages||[];
 		}
 		this.init();
 		return this;
@@ -130,7 +130,7 @@
 		var elmAttrErr = elm.attr("data-err-title");
 		if(elmAttrErr.length>0){
 			return elmAttrErr;
-		}
+
 	}
 	
 	function getErrMessage(elm){
