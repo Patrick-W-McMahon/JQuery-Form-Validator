@@ -21,10 +21,10 @@ If the form is invalid the form will not submit and will display the error messa
 If you setup a reset button on the form the form validator handles the reset and will clear the form and error messages on reset button.
 
 **Callback Methods:**
-  * onValidate: ran every time form is validated.
-  * onErrorsFound: ran when 1 or more errors have been found.
-  * onDisplayErrors: overrides the default error display method.
-  * onReset: ran on form reset.
+  * **onValidate:** ran every time form is validated.
+  * **onErrorsFound:** ran when 1 or more errors have been found.
+  * **onDisplayErrors:** overrides the default error display method.
+  * **onReset:** ran on form reset.
 
 
 Review the examples to see how easy it is to use.
