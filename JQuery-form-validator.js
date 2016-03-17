@@ -18,7 +18,8 @@
 			}else{
 				console.log("error display element not set");
 			}
-		}
+		},
+		onReset:function(){}
 	};
 	
 	$.fn[pluginName] = function(options){
@@ -43,10 +44,11 @@
 			self.modules.push(f);
 		}
 		
-		this.err = function(title,msg){
+		this.err = function(elm,title,msg){
 			self.errorMessages.push({
 				"title":title,
-				"msg":msg
+				"msg":msg,
+				"field":elm
 			});
 		}
 		
@@ -90,12 +92,12 @@
 						});
 						if($(this).attr("data-min-select")){
 							if(count<$(this).attr("data-min-select")){
-								self.err(getErrTitle($(this)),"min of "+$(this).attr("data-min-select")+" selections must be made");
+								self.err($(this),getErrTitle($(this)),"min of "+$(this).attr("data-min-select")+" selections must be made");
 							}
 						}
 						if($(this).attr("data-max-select")){
 							if(count>$(this).attr("data-max-select")){
-								self.err(getErrTitle($(this)),"max of "+$(this).attr("data-max-select")+" selections can be made");
+								self.err($(this),getErrTitle($(this)),"max of "+$(this).attr("data-max-select")+" selections can be made");
 							}
 						}
 					break;
@@ -138,8 +140,8 @@
 		return "value required";
 	}
 	
-	function reset(e){
-		event=e;
+	function reset(event){
+		self.options.onReset.call(self);
 		self.errorMessages = [];
 		self.options.errorDisplayElm.empty();
 		self.options.errorDisplayElm.hide();
@@ -151,7 +153,7 @@
 		self.errorMessages = [];
 		formElm.find(':invalid').each(function(index, node){
 			if($(this).is("input")){
-				self.err(getErrTitle($(this)),getErrMessage($(this)));
+				self.err($(this),getErrTitle($(this)),getErrMessage($(this)));
 			}
 		});
 		
