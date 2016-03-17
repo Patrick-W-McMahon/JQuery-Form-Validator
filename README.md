@@ -47,4 +47,4 @@ Modules are passed the `plugin object` and the `form element`. They have access 
 This will give a module all the access it needs to validate the fields and add errors. 
 
 
-Review the examples to see how easy it is to use.
+Review the examples to see how easy it is to use this plugin.
