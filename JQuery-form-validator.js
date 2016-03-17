@@ -58,11 +58,11 @@
 	}
 	
 	Plugin.prototype.init = function(){
-		if(isObj($(this.element).attr("errorDiplay"))){
-			this.options.errorDisplayElm = $($(this.element).attr("error_diplay"));
-		}else{
-			this.options.errorDisplayElm = $(this.options["error_display_id"]);
-		}
+		this.options.errorDisplayElm = peramSet([
+			$($(this.element).attr("error_diplay")),
+			$($(this.element).attr("errorDiplay")),
+			$($(this.element).attr("error-diplay"))
+		],$(this.options["error_display_id"]));
 		$(this.element).submit(function(e){
 			validate(e);
 		});
@@ -102,6 +102,15 @@
 				}
 			});
 		});
+	}
+	
+	function peramSet(optionsArray,defaultval){
+		for(var x=0;x<optionsArray.length;x++){
+			if(isObj(optionsArray[x])){
+				return optionsArray[x];
+			}
+		}
+		return defaultval;
 	}
 	
 	function stopSubmit(f,event){
