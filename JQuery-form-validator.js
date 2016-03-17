@@ -64,14 +64,13 @@
 			$(tE.attr("errorDiplay")),
 			$(tE.attr("error-diplay"))
 		],$(this.options["error_display_id"]));
-		$(this.element).submit(function(e){
+		tE.submit(function(e){
 			validate(e);
 		});
-		$(this.element).find('input[type=submit]').on('click',function(e){
+		tE.find('input[type=submit]').on('click',function(e){
 			validate(e);
 		});
-		
-		$(this.element).find('input[type=reset]').on('click',function(e){
+		tE.find('input[type=reset]').on('click',function(e){
 			reset(e);
 		});		
 		
