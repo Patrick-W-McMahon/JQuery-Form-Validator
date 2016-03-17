@@ -138,16 +138,16 @@
 	
 	function validate(e){
 		event=e;
-		var elm = $(self.element);
+		var formElm = $(self.element);
 		self.errorMessages = [];
-		elm.find(':invalid').each(function(index, node){
+		formElm.find(':invalid').each(function(index, node){
 			if($(this).is("input")){
 				self.err(getErrTitle($(this)),getErrMessage($(this)));
 			}
 		});
 		
 		for(var m=0;m<self.modules.length;m++){
-			self.modules[m](self,elm);
+			self.modules[m](self,formElm);
 		}
 		
 		self.options.onValidate.call(self);
