@@ -9,7 +9,7 @@
 		onDisplayErrors:function(){
 			var ede = this.options.errorDisplayElm;
 			if(isObj(ede)){
-				var myErrors = this.getErrors()||[];
+				var myErrors = this.getErrors();
 				ede.empty();
 				for(var x=0;x<myErrors.length;x++){
 					ede.append($("<div><span class='title'>"+myErrors[x].title+"</span>: "+myErrors[x].msg+"</div>"));
