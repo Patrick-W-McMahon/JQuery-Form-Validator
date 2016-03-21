@@ -77,15 +77,11 @@
 					case "checkbox_group":
 					case "checkbox-group":
 						var count=$(this).find("input[type=checkbox]:checked").length;
-						if($(this).attr("data-min-select")){
-							if(count<$(this).attr("data-min-select")){
-								self.err($(this),getErrTitle($(this)),"min of "+$(this).attr("data-min-select")+" selections must be made");
-							}
+						if($(this).attr("data-min-select")&&count<$(this).attr("data-min-select")){
+							self.err($(this),getErrTitle($(this)),"min of "+$(this).attr("data-min-select")+" selections must be made");
 						}
-						if($(this).attr("data-max-select")){
-							if(count>$(this).attr("data-max-select")){
-								self.err($(this),getErrTitle($(this)),"max of "+$(this).attr("data-max-select")+" selections can be made");
-							}
+						if($(this).attr("data-max-select")&&count>$(this).attr("data-max-select")){
+							self.err($(this),getErrTitle($(this)),"max of "+$(this).attr("data-max-select")+" selections can be made");
 						}
 					break;
 				}
