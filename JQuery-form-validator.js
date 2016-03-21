@@ -76,12 +76,7 @@
 					case "checkboxgroup":
 					case "checkbox_group":
 					case "checkbox-group":
-						var count=0;
-						$(this).find("input[type=checkbox]").each(function(){
-							if($(this).is(':checked')){
-								count++;
-							}
-						});
+						var count=$(this).find("input[type=checkbox]:checked").length;
 						if($(this).attr("data-min-select")){
 							if(count<$(this).attr("data-min-select")){
 								self.err($(this),getErrTitle($(this)),"min of "+$(this).attr("data-min-select")+" selections must be made");
