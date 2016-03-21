@@ -106,9 +106,9 @@
 		if(isObj(label)&&isObj(label.html())){
 			return label.html();
 		}
-		var elmAttrErr = elm.attr("data-err-title");
-		if(elmAttrErr.length>0){
-			return elmAttrErr;
+		var err = elm.attr("data-err-title");
+		if(err.length>0){
+			return err;
 		}
 	}
 	
