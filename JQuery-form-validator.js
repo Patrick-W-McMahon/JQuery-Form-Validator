@@ -1,4 +1,4 @@
-;(function ( $, window, document, undefined ){
+;(function($,window,document,undefined){
 	var pluginName = "validate";
 	var self;
 	var defaults={
@@ -9,7 +9,7 @@
 		onDisplayErrors:function(){
 			var ede = this.options.errorDisplayElm;
 			if(isObj(ede)){
-				var myErrors = this.getErrors();
+				var myErrors = this.getErrors()||[];
 				ede.empty();
 				for(var x=0;x<myErrors.length;x++){
 					ede.append($("<div><span class='title'>"+myErrors[x].title+"</span>: "+myErrors[x].msg+"</div>"));
@@ -45,11 +45,7 @@
 		}
 		
 		this.err = function(elm,title,msg){
-			self.errorMessages.push({
-				"title":title,
-				"msg":msg,
-				"field":elm
-			});
+			self.errorMessages.push({"title":title,"msg":msg,"field":elm});
 		}
 		
 		this.getErrors = function(){
@@ -65,7 +61,7 @@
 			$(tE.attr("error_diplay")),
 			$(tE.attr("errorDiplay")),
 			$(tE.attr("error-diplay"))
-		],$(this.options["error_display_id"]));
+			],$(this.options["error_display_id"]));
 		tE.submit(function(e){validate(e);});
 		tE.find('input[type=submit]').on('click',function(e){validate(e);});
 		tE.find('input[type=reset]').on('click',function(e){reset(e);});		
@@ -131,7 +127,6 @@
 	}
 	
 	function validate(e){
-		event=e;
 		var formElm = $(self.element);
 		self.errorMessages = [];
 		formElm.find(':invalid').each(function(index, node){
@@ -139,11 +134,9 @@
 				self.err($(this),getErrTitle($(this)),getErrMessage($(this)));
 			}
 		});
-		
 		for(var m=0;m<self.modules.length;m++){
 			self.modules[m](self,formElm);
 		}
-		
 		self.options.onValidate.call(self);
 		if(self.errorMessages.length>0){
 			stopSubmit(self,e);
@@ -151,8 +144,5 @@
 		}
 	}
 	
-	function isObj(t){
-		return typeof(t)!==undefined;
-	}
-	
-})( jQuery, window, document );
+	function isObj(t){return typeof(t)!==undefined;}	
+})(jQuery,window,document);
