@@ -85,10 +85,10 @@
 		});
 	}
 	
-	function peramSet(optionsArray,defaultval){
-		for(var x=0;x<optionsArray.length;x++){
-			if(isObj(optionsArray[x])){
-				return optionsArray[x];
+	function peramSet(optArr,defaultval){
+		for(var x=0;x<optArr.length;x++){
+			if(isObj(optArr[x])){
+				return optArr[x];
 			}
 		}
 		return defaultval;
