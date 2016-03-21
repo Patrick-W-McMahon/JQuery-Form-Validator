@@ -8,7 +8,7 @@
 		onErrorsFound:function(){},
 		onDisplayErrors:function(){
 			var ede = this.options.errorDisplayElm;
-			if(isObj(ede)){
+			if(nUo(ede)){
 				var myErrors = this.getErrors()||[];
 				ede.empty();
 				for(var x=0;x<myErrors.length;x++){
@@ -87,7 +87,7 @@
 	
 	function peramSet(optArr,defaultval){
 		for(var x=0;x<optArr.length;x++){
-			if(isObj(optArr[x])){
+			if(nUo(optArr[x])){
 				return optArr[x];
 			}
 		}
@@ -96,14 +96,14 @@
 	
 	function stopSubmit(f,event){
 		f.options.onDisplayErrors.call(f);
-		if(typeof(event)!=="undefined"){
+		if(nUo(event)){
 			event.preventDefault();
 		}
 	}
 	
 	function getErrTitle(elm){
 		var label = elm.parent().find("label[for="+elm.attr("id")+"]");
-		if(isObj(label)&&isObj(label.html())){
+		if(nUo(label)&&nUo(label.html())){
 			return label.html();
 		}
 		var err = elm.attr("data-err-title");
@@ -139,5 +139,5 @@
 		}
 	}
 	
-	function isObj(t){return typeof(t)!==undefined;}	
+	function nUo(t){return typeof(t)!==undefined;}	
 })(jQuery,window,document);
