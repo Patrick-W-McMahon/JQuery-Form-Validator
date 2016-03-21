@@ -103,7 +103,7 @@
 	
 	function getErrTitle(elm){
 		var label = elm.parent().find("label[for="+elm.attr("id")+"]");
-		if(isObj(label)&&label.html()!=undefined){
+		if(isObj(label)&&isObj(label.html())){
 			return label.html();
 		}
 		var elmAttrErr = elm.attr("data-err-title");
