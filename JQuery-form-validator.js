@@ -126,10 +126,8 @@
 	function validate(e){
 		var formElm = $(self.element);
 		self.errorMessages = [];
-		formElm.find(':invalid').each(function(index, node){
-			if($(this).is("input")){
-				self.err($(this),getErrTitle($(this)),getErrMessage($(this)));
-			}
+		formElm.find('input:invalid').each(function(index, node){
+			self.err($(this),getErrTitle($(this)),getErrMessage($(this)));
 		});
 		for(var m=0;m<self.modules.length;m++){
 			self.modules[m](self,formElm);
