@@ -68,12 +68,12 @@
 		
 		this.addModule(function(plg,formElm){
 			formElm.find("[data-validate]").each(function(){
-				switch($(this).attr("data-validate").toLowerCase()){
+				var ts = $(this);
+				switch(ts.attr("data-validate").toLowerCase()){
 					case "checkboxgroup":
 					case "checkbox_group":
 					case "checkbox-group":
-						var count=$(this).find("input[type=checkbox]:checked").length;
-						var ts = $(this);
+						var count=ts.find("input[type=checkbox]:checked").length;
 						if(ts.attr("data-min-select")&&count<ts.attr("data-min-select")){
 							self.err(ts,getErrTitle(ts),peramSet([
 								ts.attr("min-select-err"),
