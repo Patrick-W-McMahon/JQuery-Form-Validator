@@ -73,21 +73,22 @@
 					case "checkbox_group":
 					case "checkbox-group":
 						var count=$(this).find("input[type=checkbox]:checked").length;
-						if($(this).attr("data-min-select")&&count<$(this).attr("data-min-select")){
+						var ts = $(this);
+						if(ts.attr("data-min-select")&&count<ts.attr("data-min-select")){
 							var msg = peramSet([
-								$(this).attr("min-select-err"),
-								$(this).attr("min_select_err"),
-								$(this).attr("minSelectErr"),
-							],"min of "+$(this).attr("data-min-select")+" selections must be made");
-							self.err($(this),getErrTitle($(this)),msg);
+								ts.attr("min-select-err"),
+								ts.attr("min_select_err"),
+								ts.attr("minSelectErr"),
+							],"min of "+ts.attr("data-min-select")+" selections must be made");
+							self.err(ts,getErrTitle(ts),msg);
 						}
-						if($(this).attr("data-max-select")&&count>$(this).attr("data-max-select")){
+						if(ts.attr("data-max-select")&&count>ts.attr("data-max-select")){
 							var msg = peramSet([
-								$(this).attr("min-select-err"),
-								$(this).attr("min_select_err"),
-								$(this).attr("minSelectErr"),
-							],"max of "+$(this).attr("data-max-select")+" selections can be made");
-							self.err($(this),getErrTitle($(this)),msg);
+								ts.attr("min-select-err"),
+								ts.attr("min_select_err"),
+								ts.attr("minSelectErr"),
+							],"max of "+ts.attr("data-max-select")+" selections can be made");
+							self.err(ts,getErrTitle(ts),msg);
 						}
 					break;
 				}
