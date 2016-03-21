@@ -103,8 +103,8 @@
 		return defaultval;
 	}
 	
-	function stopSubmit(f,event){
-		f.options.onDisplayErrors.call(f);
+	function stopSubmit(event){
+		self.options.onDisplayErrors.call(self);
 		if(nUo(event)){
 			event.preventDefault();
 		}
@@ -143,7 +143,7 @@
 		}
 		self.options.onValidate.call(self);
 		if(self.errorMessages.length>0){
-			stopSubmit(self,e);
+			stopSubmit(e);
 			self.options.onErrorsFound.call(self);
 		}
 	}
