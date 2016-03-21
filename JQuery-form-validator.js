@@ -77,7 +77,6 @@
 					case "checkbox_group":
 					case "checkbox-group":
 						var count=0;
-						var checkboxes = $(this).find("input[type=checkbox]");
 						$(this).find("input[type=checkbox]").each(function(){
 							if($(this).is(':checked')){
 								count++;
