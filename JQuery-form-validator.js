@@ -113,10 +113,7 @@
 	}
 	
 	function getErrMessage(elm){
-		if(elm.attr("data-err-msg")){
-			return elm.attr("data-err-msg");
-		}
-		return "value required";
+		return elm.attr("data-err-msg")||"value required";
 	}
 	
 	function reset(event){
