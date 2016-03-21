@@ -36,7 +36,7 @@
 		this.element = element;
 		this.options = $.extend({},defaults,options);
 		this._defaults = defaults;
-        	this._name = pluginName;
+		this._name = pluginName;
 		this.errorMessages = [];
 		this.modules=[];
 		
@@ -74,10 +74,18 @@
 					case "checkbox-group":
 						var count=$(this).find("input[type=checkbox]:checked").length;
 						if($(this).attr("data-min-select")&&count<$(this).attr("data-min-select")){
-							self.err($(this),getErrTitle($(this)),"min of "+$(this).attr("data-min-select")+" selections must be made");
+							self.err($(this),getErrTitle($(this)),peramSet([
+								$($(this).attr("min-select-err")),
+								$($(this).attr("min_select_err")),
+								$($(this).attr("minSelectErr"))
+								],"min of "+$(this).attr("data-min-select")+" selections must be made"));
 						}
 						if($(this).attr("data-max-select")&&count>$(this).attr("data-max-select")){
-							self.err($(this),getErrTitle($(this)),"max of "+$(this).attr("data-max-select")+" selections can be made");
+							self.err($(this),getErrTitle($(this)),peramSet([
+								$($(this).attr("max-select-err")),
+								$($(this).attr("max_select_err")),
+								$($(this).attr("maxSelectErr"))
+								],"max of "+$(this).attr("data-max-select")+" selections can be made"));
 						}
 					break;
 				}
