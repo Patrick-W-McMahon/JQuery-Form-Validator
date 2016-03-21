@@ -75,20 +75,18 @@
 						var count=$(this).find("input[type=checkbox]:checked").length;
 						var ts = $(this);
 						if(ts.attr("data-min-select")&&count<ts.attr("data-min-select")){
-							var msg = peramSet([
+							self.err(ts,getErrTitle(ts),peramSet([
 								ts.attr("min-select-err"),
 								ts.attr("min_select_err"),
 								ts.attr("minSelectErr"),
-							],"min of "+ts.attr("data-min-select")+" selections must be made");
-							self.err(ts,getErrTitle(ts),msg);
+								],"min of "+ts.attr("data-min-select")+" selections must be made"));
 						}
 						if(ts.attr("data-max-select")&&count>ts.attr("data-max-select")){
-							var msg = peramSet([
+							self.err(ts,getErrTitle(ts),peramSet([
 								ts.attr("min-select-err"),
 								ts.attr("min_select_err"),
 								ts.attr("minSelectErr"),
-							],"max of "+ts.attr("data-max-select")+" selections can be made");
-							self.err(ts,getErrTitle(ts),msg);
+								],"max of "+ts.attr("data-max-select")+" selections can be made"));
 						}
 					break;
 				}
