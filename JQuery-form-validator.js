@@ -36,7 +36,7 @@
 		this.options = $.extend({},defaults,options);
 		this._defaults = defaults;
 		this._name = pluginName;
-		this.errorMessages = [];
+		this.errorMessages=[];
 		this.modules=[];
 		
 		this.addModule=function(f){
@@ -73,19 +73,21 @@
 					case "checkbox_group":
 					case "checkbox-group":
 						var count=ts.find("input[type=checkbox]:checked").length;
-						if(ts.attr("data-min-select")&&count<ts.attr("data-min-select")){
+						var min = ts.attr("data-min-select");
+						var max = ts.attr("data-max-select");
+						if(min&&count<min){
 							self.err(ts,getErrTitle(ts),peramSet([
 								ts.attr("min-select-err"),
 								ts.attr("min_select_err"),
 								ts.attr("minSelectErr"),
-								],"min of "+ts.attr("data-min-select")+" selections must be made"));
+								],"min of "+min+" selections must be made"));
 						}
-						if(ts.attr("data-max-select")&&count>ts.attr("data-max-select")){
+						if(max&&count>max){
 							self.err(ts,getErrTitle(ts),peramSet([
 								ts.attr("min-select-err"),
 								ts.attr("min_select_err"),
 								ts.attr("minSelectErr"),
-								],"max of "+ts.attr("data-max-select")+" selections can be made"));
+								],"max of "+max+" selections can be made"));
 						}
 					break;
 				}
