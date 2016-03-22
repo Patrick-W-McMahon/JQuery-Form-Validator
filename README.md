@@ -38,6 +38,7 @@ all attributes have been set to be used in 3 different formats for example `erro
   
 **Checkbox Group**
 A checkbox group lets you group checkbox elements into a single group that can have rules set on it. for example setting a minimume and maximume number of checkboxs selected in the group. To use a checkbox group you must set the attribute `data-validate='checkbox_group'` on the element wrapping the checkboxs.
+The following are attrbutes added to the Checkbox Group element:
   * **data-min-select:** given a number it will set a minimum number of checkboxs if the number of boxs check is less than min an error message is displayed.
   * **min-select-err:** set the error message that is displayed under min select error condition.
   * **data-max-select:** given a number it will set a maximum number of checkboxs if the number of boxs check is more than max an error message is displayed.
