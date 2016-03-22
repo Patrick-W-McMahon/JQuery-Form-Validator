@@ -18,7 +18,8 @@
 				console.log("error display element not set");
 			}
 		},
-		onReset:function(){}
+		onReset:function(){},
+		onSubmit:function(){}
 	};
 	
 	$.fn[pluginName]=function(options){
@@ -106,11 +107,11 @@
 	}
 	
 	function getErrTitle(elm){
-		var label = elm.parent().find("label[for="+elm.attr("id")+"]");
+		var label=elm.parent().find("label[for="+elm.attr("id")+"]");
 		if(nUo(label)&&nUo(label.html())){
 			return label.html();
 		}
-		var err = elm.attr("data-err-title");
+		var err=elm.attr("data-err-title");
 		if(err.length>0){
 			return err;
 		}
@@ -122,7 +123,7 @@
 	
 	function reset(event){
 		self.options.onReset.call(self);
-		self.errorMessages = [];
+		self.errorMessages=[];
 		self.options.errorDisplayElm.empty();
 		self.options.errorDisplayElm.hide();
 	}
@@ -141,6 +142,8 @@
 			self.options.onDisplayErrors.call(self);
 			e.preventDefault();
 			self.options.onErrorsFound.call(self);
+		}else{
+			self.options.onSubmit.call(self,e);
 		}
 	}
 	
