@@ -1,5 +1,5 @@
 ;(function($,window,document,undefined){
-	var pluginName = "validate";
+	var pluginName="validate";
 	var self;
 	var defaults={
 		error_display_id:"",
@@ -7,9 +7,9 @@
 		onValidate:function(){},
 		onErrorsFound:function(){},
 		onDisplayErrors:function(){
-			var ede = this.options.errorDisplayElm;
+			var ede=this.options.errorDisplayElm;
 			if(nUo(ede)){
-				var err = this.getErrors();
+				var err=this.getErrors();
 				ede.empty();
 				for(var x=0;x<err.length;x++){
 					ede.append($("<div><span class='title'>"+err[x].title+"</span>: "+err[x].msg+"</div>")).show();
@@ -21,9 +21,9 @@
 		onReset:function(){}
 	};
 	
-	$.fn[pluginName] = function(options){
+	$.fn[pluginName]=function(options){
 		return this.each(function(){
-			if (!$.data(this,'plugin_'+pluginName)){
+			if(!$.data(this,'plugin_'+pluginName)){
 				$.data(this,'plugin_'+pluginName,new Plugin(this,options));
 			}
 		});
@@ -39,23 +39,23 @@
 		this.errorMessages = [];
 		this.modules=[];
 		
-		this.addModule = function(f){
+		this.addModule=function(f){
 			self.modules.push(f);
 		}
 		
-		this.err = function(elm,title,msg){
+		this.err=function(elm,title,msg){
 			self.errorMessages.push({"title":title,"msg":msg,"field":elm});
 		}
 		
-		this.getErrors = function(){
+		this.getErrors=function(){
 			return self.errorMessages||[];
 		}
 		this.init();
 		return this;
 	}
 	
-	Plugin.prototype.init = function(){
-		var tE = $(this.element);
+	Plugin.prototype.init=function(){
+		var tE=$(this.element);
 		this.options.errorDisplayElm = peramSet([
 			$(tE.attr("error_diplay")),
 			$(tE.attr("errorDiplay")),
@@ -102,13 +102,6 @@
 		return defaultval;
 	}
 	
-	function stopSubmit(event){
-		self.options.onDisplayErrors.call(self);
-		if(nUo(event)){
-			event.preventDefault();
-		}
-	}
-	
 	function getErrTitle(elm){
 		var label = elm.parent().find("label[for="+elm.attr("id")+"]");
 		if(nUo(label)&&nUo(label.html())){
@@ -133,7 +126,7 @@
 	
 	function validate(e){
 		var formElm = $(self.element);
-		self.errorMessages = [];
+		self.errorMessages=[];
 		formElm.find('input:invalid').each(function(index, node){
 			self.err($(this),getErrTitle($(this)),getErrMessage($(this)));
 		});
@@ -142,7 +135,8 @@
 		}
 		self.options.onValidate.call(self);
 		if(self.errorMessages.length>0){
-			stopSubmit(e);
+			self.options.onDisplayErrors.call(self);
+			e.preventDefault();
 			self.options.onErrorsFound.call(self);
 		}
 	}
