@@ -84,9 +84,9 @@
 						}
 						if(max&&count>max){
 							self.err(ts,getErrTitle(ts),peramSet([
-								ts.attr("min-select-err"),
-								ts.attr("min_select_err"),
-								ts.attr("minSelectErr"),
+								ts.attr("max-select-err"),
+								ts.attr("max_select_err"),
+								ts.attr("maxSelectErr"),
 								],"max of "+max+" selections can be made"));
 						}
 					break;
