@@ -20,6 +20,26 @@ together. you can set 'data-min-select' to the min number of checked boxs except
 If the form is invalid the form will not submit and will display the error messages (if an error display element has been assigned).
 If you setup a reset button on the form the form validator handles the reset and will clear the form and error messages on reset button.
 
+**Form attributes:**
+  * **error_display:** this attribute is added to the form elment and the value should the the id of the element that will be used for the error display. 
+ 
+**Field attributes:**
+  * **data-err-msg:** pass the error message string that will be displayed for this field.
+  * **data-err-title:** pass the title for the error message for this field. If not passed will look for an adjacent label tag and will use the internal html as the title. The label tag must have a for attribute that is set to the id of the field.
+  * 
+  
+**Validation settings**
+  * **data-validate:** sets an element to a validator group.
+  
+**Checkbox Group**
+A checkbox group lets you group checkbox elements into a single group that can have rules set on it. for example setting a minimume and maximume number of checkboxs selected in the group. To use a checkbox group you must set the attribute `data-validate='checkbox_group'` on the element wrapping the checkboxs.
+  * **data-min-select:** given a number it will set a minimum number of checkboxs if the number of boxs check is less than min an error message is displayed.
+  * **min-select-err:** set the error message that is displayed under min select error condition.
+  * **data-max-select:** given a number it will set a maximum number of checkboxs if the number of boxs check is more than max an error message is displayed.
+  * **max-select-err:** set the error message that is displayed under max select error condition.
+  
+
+
 **Callback Methods:**
   * **onValidate:** ran every time form is validated.
   * **onErrorsFound:** ran when 1 or more errors have been found.
