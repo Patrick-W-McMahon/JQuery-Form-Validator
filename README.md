@@ -52,6 +52,7 @@ The following are attrbutes added to the Checkbox Group element:
   * **onErrorsFound:** ran when 1 or more errors have been found.
   * **onDisplayErrors:** overrides the default error display method.
   * **onReset:** ran on form reset.
+  * **onSubmit:** this is called when the form is valid and is about to submit.
    
 **Internal Methods:**
   * **getErrors():** returns an array of error objects `{title,msg,field}`. accessed as plugin method
