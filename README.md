@@ -42,6 +42,7 @@ If you setup a reset button on the form the form validator handles the reset and
   * **_defaults:** default options. (currently commented out and may be removed in future updates). 
   * **errorMessages:** array of error message objects. Use `this.getErrors()`.
   * **modules:** array of all modules in the plugin.
+  * **self:** points to the plugin instance that is currently running. used when not in scope of plugin. internal use only.
  
 **Modules**
 
