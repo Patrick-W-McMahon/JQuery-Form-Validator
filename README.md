@@ -20,6 +20,11 @@ together. you can set 'data-min-select' to the min number of checked boxs except
 If the form is invalid the form will not submit and will display the error messages (if an error display element has been assigned).
 If you setup a reset button on the form the form validator handles the reset and will clear the form and error messages on reset button.
 
+all attributes have been set to be used in 3 different formats for example `error_display` can be called in the following ways:
+  * `error_display`
+  * `error-display`
+  * `errorDisplay`
+
 **Form attributes:**
   * **error_display:** this attribute is added to the form elment and the value should the the id of the element that will be used for the error display. 
  
