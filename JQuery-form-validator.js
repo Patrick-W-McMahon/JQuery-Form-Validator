@@ -12,8 +12,7 @@
 				var err = this.getErrors()||[];
 				ede.empty();
 				for(var x=0;x<err.length;x++){
-					ede.append($("<div><span class='title'>"+err[x].title+"</span>: "+err[x].msg+"</div>"));
-					ede.show();
+					ede.append($("<div><span class='title'>"+err[x].title+"</span>: "+err[x].msg+"</div>")).show();
 				}
 			}else{
 				console.log("error display element not set");
