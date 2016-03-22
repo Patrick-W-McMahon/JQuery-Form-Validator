@@ -32,12 +32,14 @@ If you setup a reset button on the form the form validator handles the reset and
   * **getErrTitle(elm):** attempts to get an error title based on the DOM. Not accesed by $(this) and is only used for modules.
   * **peramSet(optionsArray,defaultval):** passing an array of optional attributes it will pick a valid attr to return. Not accesed by $(this) and is only used for modules.
   * **getErrMessage(elm):** attempts to get an error message from the DOM. Not accesed by $(this) and is only used for modules.
-  * **isObj(t):** returns true if t is a valid object or false if undefined. Not accesed by $(this) and is only used for modules.
+  * **nUo(t):** `Not Undefined Object` returns true if t is a valid object or false if undefined. Not accesed by $(this) and is only used for modules.
+  * **peramSet(optArr,defaultval):** This function will check each object in the optArr and return the first one that is valid. Fall back to defaultval if all optArr objects are not valid. 
+  * **aAb(arr,sP,elm):** `array attribute builder` takes an array `arr` of strings and concatinates starting point `sP` to the front of each string and then calls it as an attribute on the element `elm`. It then returns an array of the values.
   
 **Variables**
   * **element:** points to the form element.
   * **options:** all configurable options.
-  * **_defaults:** default options.
+  * **_defaults:** default options. (currently commented out and may be removed in future updates). 
   * **errorMessages:** array of error message objects. Use `this.getErrors()`.
   * **modules:** array of all modules in the plugin.
  
