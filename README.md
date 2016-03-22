@@ -8,7 +8,7 @@ DOM element that will be the container for the error messages.
 
 To change the error message that is displayed for a field add "data-err-msg" to the input tag and pass it your new error message.
 
-If you're not happy with how the error message output is. Use the onValidate callback to execute a function where you can then call the getErrors() method to get the error message array to fully customize your error display output. The errorArray holds an array of error objects. Each error object is formatted like so {title,msg}
+If you're not happy with how the error message output is. Use the onValidate callback to execute a function where you can then call the getErrors() method to get the error message array to fully customize your error display output. The errorArray holds an array of error objects. Each error object is formatted like so `{title,msg,field}`
 
 The title of the error can be set with "data-err-title" or setting a label with a 'for' attribute to the input field.
 
