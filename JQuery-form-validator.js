@@ -73,8 +73,8 @@
 					case "checkbox_group":
 					case "checkbox-group":
 						var count=ts.find("input[type=checkbox]:checked").length;
-						var min = ts.attr("data-min-select");
-						var max = ts.attr("data-max-select");
+						var min = ts.attr("data-min-select")||false;
+						var max = ts.attr("data-max-select")||false;
 						if(min&&count<min){
 							self.err(ts,getErrTitle(ts),peramSet([
 								ts.attr("min-select-err"),
