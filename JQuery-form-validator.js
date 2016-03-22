@@ -9,10 +9,10 @@
 		onDisplayErrors:function(){
 			var ede = this.options.errorDisplayElm;
 			if(nUo(ede)){
-				var myErrors = this.getErrors()||[];
+				var err = this.getErrors()||[];
 				ede.empty();
-				for(var x=0;x<myErrors.length;x++){
-					ede.append($("<div><span class='title'>"+myErrors[x].title+"</span>: "+myErrors[x].msg+"</div>"));
+				for(var x=0;x<err.length;x++){
+					ede.append($("<div><span class='title'>"+err[x].title+"</span>: "+err[x].msg+"</div>"));
 					ede.show();
 				}
 			}else{
