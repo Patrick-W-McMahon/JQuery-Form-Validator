@@ -34,7 +34,7 @@
 		self = this;
 		this.element = element;
 		this.options = $.extend({},defaults,options);
-		this._defaults = defaults;
+		//this._defaults = defaults;
 		this._name = pluginName;
 		this.errorMessages=[];
 		this.modules=[];
@@ -75,24 +75,25 @@
 						var count=ts.find("input[type=checkbox]:checked").length;
 						var min = ts.attr("data-min-select")||false;
 						var max = ts.attr("data-max-select")||false;
+						var attrArr=["-select-err","_select_err","SelectErr"];
 						if(min&&count<min){
-							self.err(ts,getErrTitle(ts),peramSet([
-								ts.attr("min-select-err"),
-								ts.attr("min_select_err"),
-								ts.attr("minSelectErr"),
-								],"min of "+min+" selections must be made"));
+							self.err(ts,getErrTitle(ts),peramSet(aAb(attrArr,"min",ts),"min of "+min+" selections must be made"));
 						}
 						if(max&&count>max){
-							self.err(ts,getErrTitle(ts),peramSet([
-								ts.attr("max-select-err"),
-								ts.attr("max_select_err"),
-								ts.attr("maxSelectErr"),
-								],"max of "+max+" selections can be made"));
+							self.err(ts,getErrTitle(ts),peramSet(aAb(attrArr,"max",ts),"max of "+max+" selections can be made"));
 						}
 					break;
 				}
 			});
 		});
+	}
+	
+	function aAb(arr,sP,elm){//array attr builder
+		var r=[];
+		for(var x=0;x<arr.length;x++){
+			r.push(elm.attr(sP+arr[x]));
+		}
+		return r;
 	}
 	
 	function peramSet(optArr,defaultval){
