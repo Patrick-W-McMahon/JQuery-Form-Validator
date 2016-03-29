@@ -55,15 +55,22 @@ The following are attrbutes added to the Checkbox Group element:
   * **onSubmit:** this is called when the form is valid and is about to submit.
    
 **Internal Methods:**
-  * **getErrors():** returns an array of error objects `{title,msg,field}`. accessed as plugin method
+
+The following methods can be accessed by $(this) and are avalable to callback methods. 
+  * **getErrors():** returns an array of error objects `{title,msg,field}`.
   * **addModule(module):** adds new module to the plugin. Modules are executed on validation. accessed as plugin method
-  * **getErrTitle(elm):** attempts to get an error title based on the DOM. Not accesed by $(this) and is only used for modules.
-  * **peramSet(optionsArray,defaultval):** passing an array of optional attributes it will pick a valid attr to return. Not accesed by $(this) and is only used for modules.
-  * **getErrMessage(elm):** attempts to get an error message from the DOM. Not accesed by $(this) and is only used for modules.
-  * **nUo(t):** `Not Undefined Object` returns true if t is a valid object or false if undefined. Not accessed by $(this) and is only used for modules.
+
+  
+**Internal Methods: (for modules)**
+
+The following methods are not accesed by $(this) and is only used for modules. Attempting to use these methods in callback methods would return a method not found exception. 
+  * **getErrTitle(elm):** attempts to get an error title based on the DOM.
+  * **peramSet(optionsArray,defaultval):** passing an array of optional attributes it will pick a valid attr to return.
+  * **getErrMessage(elm):** attempts to get an error message from the DOM.
+  * **nUo(t):** `Not Undefined Object` returns true if t is a valid object or false if undefined.
   * **peramSet(optArr,defaultval):** This function will check each object in the optArr and return the first one that is valid. Fall back to defaultval if all optArr objects are not valid. 
   * **aAb(arr,sP,elm):** `array attribute builder` takes an array `arr` of strings and concatinates starting point `sP` to the front of each string and then calls it as an attribute on the element `elm`. It then returns an array of the values.
-  
+
 **Variables**
   * **element:** points to the form element.
   * **options:** all configurable options.
