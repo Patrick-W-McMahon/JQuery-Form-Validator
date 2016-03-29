@@ -57,7 +57,7 @@ The following methods can be accessed by $(this) and are avalable to callback me
 
 **Internal Methods: (for modules)**
 
-The following methods are not accesed by $(this) and is only used for modules. Attempting to use these methods in callback methods would return a method not found exception. 
+The following methods are not accesed by $(this) and is only used for modules. Attempting to use these methods in callback methods would return a `method name not found exception`. 
   * **getErrTitle(elm):** attempts to get an error title based on the DOM.
   * **peramSet(optionsArray,defaultval):** passing an array of optional attributes it will pick a valid attr to return.
   * **getErrMessage(elm):** attempts to get an error message from the DOM.
