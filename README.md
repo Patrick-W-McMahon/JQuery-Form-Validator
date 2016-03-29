@@ -56,7 +56,7 @@ The following methods can be accessed by $(this) and are avalable to callback me
   * **getErrors():** returns an array of error objects `{title,msg,field}`.
   * **addModule(module):** adds new module to the plugin. Modules are executed on validation. accessed as plugin method
   * **err(elm,title,msg):** adds a new error object to the error array. `elm` is the object reference to the field. `title` is the error message title. `msg` is the error message body.
-  *  **validate():** is a soft validate call that can be called to run the validation. As this is not called by an event it will not submit on validation. This can be used in an onFieldUpdate call to update the error messages. 
+  *  **validate():** is a soft validate call that can be called to run the validation. As this is not called by an event it will not submit on validation. This can be used in an `onFieldUpdate` call to update the error messages. 
 
 **Internal Methods: (for modules)**
 
