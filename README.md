@@ -66,6 +66,8 @@ The following methods are not accesed by $(this) and is only used for modules. A
   * **aAb(arr,sP,elm):** `array attribute builder` takes an array `arr` of strings and concatinates starting point `sP` to the front of each string and then calls it as an attribute on the element `elm`. It then returns an array of the values.
 
 **Variables**
+
+All of the following variables are accessable by $(this) and can be used in callback methods and modules.
   * **element:** points to the form element.
   * **options:** all configurable options.
   * **_defaults:** default options. (currently commented out and may be removed in future updates). 
