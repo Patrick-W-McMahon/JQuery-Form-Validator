@@ -54,7 +54,7 @@ The following are attrbutes added to the Checkbox Group element:
 The following methods can be accessed by $(this) and are avalable to callback methods. 
   * **getErrors():** returns an array of error objects `{title,msg,field}`.
   * **addModule(module):** adds new module to the plugin. Modules are executed on validation. accessed as plugin method
-  * **err(elm,title,msg):** adds a new error object to the error array.
+  * **err(elm,title,msg):** adds a new error object to the error array. `elm` is the object reference to the field. `title` is the error message title. `msg` is the error message body.
 
 **Internal Methods: (for modules)**
 
