@@ -48,6 +48,7 @@ The following are attrbutes added to the Checkbox Group element:
   * **onDisplayErrors:** overrides the default error display method.
   * **onReset:** ran on form reset. This is triggered when the user presses the reset button on the form.
   * **onSubmit:** this is called when the form is valid and is about to submit.
+  * **onFieldUpdate:** This is called when a field item in the form has been updated.
    
 **Internal Methods: (for callback methods)**
 
