@@ -29,7 +29,6 @@ all attributes have been set to be used in 3 different formats for example `erro
 **Field attributes:**
   * **data-err-msg:** pass the error message string that will be displayed for this field.
   * **data-err-title:** pass the title for the error message for this field. If not passed will look for an adjacent label tag and will use the internal html as the title. The label tag must have a for attribute that is set to the id of the field.
-  * 
   
 **Validation settings**
   * **data-validate:** sets an element to a validator group.
