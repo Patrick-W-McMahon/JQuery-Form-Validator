@@ -25,6 +25,11 @@ $( document ).ready(function() {
 			}else{
 				console.log("error display element not set");
 			}
+		},
+		onFieldUpdate:function(plg,e){
+			if(this.getErrors().length>0){
+				this.validate();
+			}
 		}
 	});
 });
