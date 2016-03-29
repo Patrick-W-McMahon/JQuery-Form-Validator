@@ -24,7 +24,7 @@ all attributes have been set to be used in 3 different formats for example `erro
   * `errorDisplay`
 
 **Form attributes:**
-  * **error_display:** this attribute is added to the form elment and the value should the the id of the element that will be used for the error display. 
+  * **error_display:** this attribute is added to the form elment and the value should be the id of the element that will be used for the error display. 
  
 **Field attributes:**
   * **data-err-msg:** pass the error message string that will be displayed for this field.
