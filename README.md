@@ -54,7 +54,7 @@ The following are attrbutes added to the Checkbox Group element:
   * **onReset:** ran on form reset.
   * **onSubmit:** this is called when the form is valid and is about to submit.
    
-**Internal Methods:**
+**Internal Methods: (for callback)**
 
 The following methods can be accessed by $(this) and are avalable to callback methods. 
   * **getErrors():** returns an array of error objects `{title,msg,field}`.
