@@ -19,7 +19,8 @@
 			}
 		},
 		onReset:function(){},
-		onSubmit:function(){}
+		onSubmit:function(){},
+		onFieldUpdate:function(){}
 	};
 	
 	$.fn[pluginName]=function(options){
@@ -48,6 +49,10 @@
 			self.errorMessages.push({"title":title,"msg":msg,"field":elm});
 		}
 		
+		this.validate=function(){
+			validate();
+		}
+		
 		this.getErrors=function(){
 			return self.errorMessages||[];
 		}
@@ -64,7 +69,10 @@
 			],$(this.options["error_display_id"]));
 		tE.submit(function(e){validate(e);});
 		tE.find('input[type=submit]').on('click',function(e){validate(e);});
-		tE.find('input[type=reset]').on('click',function(e){reset(e);});		
+		tE.find('input[type=reset]').on('click',function(e){reset(e);});
+		tE.find('input').change(function(e){
+			self.options.onFieldUpdate.call(self,e);
+		});
 		
 		this.addModule(function(plg,formElm){
 			formElm.find("[data-validate]").each(function(){
@@ -140,7 +148,9 @@
 		self.options.onValidate.call(self);
 		if(self.errorMessages.length>0){
 			self.options.onDisplayErrors.call(self);
-			e.preventDefault();
+			if(nUo(e)){
+				e.preventDefault();
+			}
 			self.options.onErrorsFound.call(self);
 		}else{
 			self.options.onSubmit.call(self,e);
