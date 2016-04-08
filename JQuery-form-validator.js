@@ -4,6 +4,7 @@
 	var defaults={
 		error_display_id:"",
 		errorDisplayElm:"",
+		honeypotElm:false,
 		onValidate:function(){},
 		onErrorsFound:function(){},
 		onDisplayErrors:function(){
@@ -20,7 +21,8 @@
 		},
 		onReset:function(){},
 		onSubmit:function(){},
-		onFieldUpdate:function(){}
+		onFieldUpdate:function(){},
+		onBotFound:function(){}
 	};
 	
 	$.fn[pluginName]=function(options){
@@ -163,7 +165,19 @@
 			}
 			self.options.onErrorsFound.call(self);
 		}else{
-			self.options.onSubmit.call(self,e);
+			if(self.options.honeypotElm){
+				var hp = $(self.options.honeypotElm);
+				if(hp.val().length>0){
+					self.options.onBotFound.call(self,e);
+					if(nUo(e)){
+						e.preventDefault();
+					}
+				}else{
+					self.options.onSubmit.call(self,e);
+				}
+			}else{
+				self.options.onSubmit.call(self,e);
+			}
 		}
 	}
 	
