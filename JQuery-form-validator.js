@@ -95,6 +95,16 @@
 				}
 			});
 		});
+		this.addModule(function(plg,formElm){
+			formElm.find("textarea[required]").each(function(){
+				var elm = $(this);
+				if(elm.val().length==0){
+					self.err(elm,getErrTitle(elm),peramSet([
+						elm.attr("data-err-msg")
+					],"Field Required"));
+				}
+			});
+		});
 	}
 	
 	function aAb(arr,sP,elm){//array attr builder
@@ -115,13 +125,13 @@
 	}
 	
 	function getErrTitle(elm){
-		var label=elm.parent().find("label[for="+elm.attr("id")+"]");
-		if(nUo(label)&&nUo(label.html())){
-			return label.html();
-		}
 		var err=elm.attr("data-err-title");
 		if(err.length>0){
 			return err;
+		}
+		var label=elm.parent().find("label[for="+elm.attr("id")+"]");
+		if(nUo(label)&&nUo(label.html())){
+			return label.html();
 		}
 	}
 	
