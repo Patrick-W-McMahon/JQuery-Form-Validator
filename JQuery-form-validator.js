@@ -72,9 +72,7 @@
 		tE.submit(function(e){validate(e);});
 		tE.find('input[type=submit]').on('click',function(e){validate(e);});
 		tE.find('input[type=reset]').on('click',function(e){reset(e);});
-		tE.find('input').change(function(e){
-			self.options.onFieldUpdate.call(self,e);
-		});
+		tE.find('input').change(function(e){self.options.onFieldUpdate.call(self,e);});
 		
 		this.addModule(function(plg,formElm){
 			formElm.find("[data-validate]").each(function(){
